@@ -8,13 +8,19 @@ use Livewire\Volt\Volt;
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('profile page is displayed', function () {
-    $this->actingAs($user = User::factory()->create());
+    $this->withoutMiddleware([\Illuminate\Auth\Middleware\RequirePassword::class]);
+
+    $this->actingAs($user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]));
 
     $this->get('/settings/profile')->assertOk();
 });
 
 test('profile information can be updated', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
 
     $this->actingAs($user);
 
@@ -33,7 +39,9 @@ test('profile information can be updated', function () {
 });
 
 test('email verification status is unchanged when email address is unchanged', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
 
     $this->actingAs($user);
 
@@ -48,7 +56,9 @@ test('email verification status is unchanged when email address is unchanged', f
 });
 
 test('user can delete their account', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
 
     $this->actingAs($user);
 
@@ -61,11 +71,13 @@ test('user can delete their account', function () {
         ->assertRedirect('/');
 
     expect($user->fresh())->toBeNull();
-    expect(auth()->check())->toBeFalse();
+    expect(\Illuminate\Support\Facades\Auth::check())->toBeFalse();
 });
 
 test('correct password must be provided to delete account', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create([
+        'email_verified_at' => now(),
+    ]);
 
     $this->actingAs($user);
 
