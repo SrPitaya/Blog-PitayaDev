@@ -1,4 +1,4 @@
-<x-layout :meta-title="$post->title" :meta-description="$post->body">
+<x-blog-layout :meta-title="$post->title" :meta-description="$post->body">
     <article class="mx-auto flex max-w-4xl flex-col">
 
         <!-- Encabezado con título e imagen -->
@@ -76,4 +76,4 @@
             </div>
         </div> --}}
     </article>
-</x-layout>
+</x-blo-layout>

@@ -1,4 +1,4 @@
-<x-layout meta-title="{{ __('Blog') }}" meta-description="{{ __('Blog page') }}">
+<x-blog-layout meta-title="{{ __('Blog') }}" meta-description="{{ __('Blog page') }}">
     <div class="mx-auto mt-4 max-w-6xl">
         <!-- Título principal -->
         <h1 class="my-4 text-center font-serif text-4xl font-extrabold text-sky-600 md:text-5xl">
@@ -16,17 +16,11 @@
                     </svg>
                 </a>
             </div>
+            <h2 class="text-center font-semibold leading-tight text-slate-800 dark:text-slate-200">
+                {{ __('Create a new post') }}
+            </h2>
         @endauth
     </div>
-
-    <!-- Subtítulo -->
-    @if (\App\Models\Post::doesntExist())
-        {{-- Si no hay posts --}}
-        <h2 class="text-center font-semibold leading-tight text-slate-800 dark:text-slate-200">
-            {{ __('Create a new post') }}
-        </h2>
-    @endif
-
 
     <!-- Contenedor de los posts -->
     <div class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -116,4 +110,4 @@
             </article>
         @endforeach
     </div>
-</x-layout>
+</x-blog-layout>

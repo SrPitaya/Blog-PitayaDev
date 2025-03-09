@@ -1,4 +1,4 @@
-<x-layout meta-title="Create new post" meta-description="Form to create a new post">
+<x-blog-layout meta-title="{{ __('Create a new post') }}" meta-description="Form to create a new post">
     <div class="mx-auto mt-4 max-w-6xl">
         <h1 class="mt-4 mb-8 text-center font-serif text-4xl font-extrabold text-sky-600 md:text-5xl">
             {{ __('Create a new post') }}
@@ -27,4 +27,4 @@
             </div>
         </form>
     </div>
-</x-layout>
+</x-blog-layout>
