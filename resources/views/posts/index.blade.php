@@ -104,9 +104,8 @@
                                 <circle cx="12" cy="12" r="3" fill="currentColor" />
                             </svg>
                         </a>
-                    @endauth
-
-                </div>
+                    </div>
+                @endauth
             </article>
         @endforeach
     </div>
