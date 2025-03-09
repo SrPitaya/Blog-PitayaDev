@@ -99,6 +99,17 @@
                                 </svg>
                             </button>
                         </form>
+
+                        <!-- Botón para visualizar el post -->
+                        <a class="rounded-full bg-green-600 p-3 text-green-100 shadow-lg hover:bg-green-700 active:bg-green-800"
+                            href="{{ route('posts.show', $post) }}">
+                            <svg class="h-6 w-6" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2 12s3 7 10 7 10-7 10-7-3-7-10-7-10 7-10 7Z" />
+                                <circle cx="12" cy="12" r="3" fill="currentColor" />
+                            </svg>
+                        </a>
                     @endauth
 
                 </div>

@@ -9,12 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->except('index', 'show');
     }
-
 
     public function index()
     {
@@ -35,22 +33,14 @@ class PostController extends Controller
 
     public function store(SavePostRequest $request)
     {
-        // $validated = request()->validate([
-        //     'title' => ['required', 'min:5'],
-        //     'body' => ['required', 'min:10']
-        // ]); #Validación de datos
-
-        // $post = new Post();
-        // $post -> title = $request -> input('title');
-        // $post -> body = $request -> input('body');
-        // $post -> save();
-        // session() -> flash('success', 'Post was created');
-        // return to_route('posts.index');
-        # Otra forma de hacerlo
-
+        // Crear un nuevo post con los datos validados
         Post::create($request->validated());
 
-        return to_route('posts.index') -> with('success', 'Post was created');
+        // Redirigir con mensaje de éxito indicando que se creó el post
+        return to_route('posts.index')->with('success', [
+            'message' => 'Post was created',
+            'type' => 'created'
+        ]);
     }
 
     public function edit(Post $post)
@@ -58,25 +48,27 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    public function update(SavePostRequest $request, Post $post){
-
-        // $validated = request()->validate([
-        //     'title' => ['required', 'min:5'],
-        //     'body' => ['required', 'min:10']
-        // ]); #Validación de datos
-
-        // $post -> title = $request -> input('title');
-        // $post -> body = $request -> input('body');
-        // $post -> save();
-        $post -> update($request -> validated());
+    public function update(SavePostRequest $request, Post $post)
+    {
+        // Actualizar el post con los datos validados
+        $post->update($request->validated());
         
-        return to_route('posts.index')-> with('success', 'Post was updated');
+        // Redirigir con mensaje de éxito indicando que se editó el post
+        return to_route('posts.index')->with('success', [
+            'message' => 'Post was updated',
+            'type' => 'updated'
+        ]);
     }
 
     public function destroy(Post $post)
     {
-        $post -> delete();
-        return to_route('posts.index')-> with('success', 'Post was deleted');
+        // Eliminar el post
+        $post->delete();
+        
+        // Redirigir con mensaje de éxito indicando que se eliminó el post
+        return to_route('posts.index')->with('success', [
+            'message' => 'Post was deleted',
+            'type' => 'deleted'
+        ]);
     }
 }
-
