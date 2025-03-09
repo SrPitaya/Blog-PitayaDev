@@ -6,7 +6,7 @@
             <h1 class="text-center text-2xl font-semibold leading-tight text-slate-800 dark:text-slate-200 md:text-4xl">
                 {{ __('Post') }}: {{ $post->title }}
             </h1>
-            <img class="h-full w-full rounded object-cover object-center" src="https://picsum.photos/1080"
+            <img class="h-full w-full rounded object-cover object-center" src="https://picsum.photos/seed/{{ $post->id }}/1080"
                 alt="#" />
             <h2 class="p-5 text-x1 text-center font-semibold leading-tight text-slate-800 dark:text-slate-200">
                 {{ $post->body }}

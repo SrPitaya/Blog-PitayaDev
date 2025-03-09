@@ -16,7 +16,7 @@
                     </svg>
                 </a>
             </div>
-            <h2 class="text-center font-semibold leading-tight text-slate-800 dark:text-slate-200">
+            <h2 class="p-2 text-center font-semibold leading-tight text-slate-800 dark:text-slate-200">
                 {{ __('Create a new post') }}
             </h2>
         @endauth
@@ -29,7 +29,7 @@
                 <!-- Imagen del post -->
                 <div class="h-52">
                     <a class="duration-300 hover:opacity-75">
-                        <img class="h-full w-full object-cover object-center" src="https://picsum.photos/1080"
+                        <img class="h-full w-full object-cover object-center" src="https://picsum.photos/seed/{{ $post->id }}/1080"
                             alt="#" />
                     </a>
                 </div>
