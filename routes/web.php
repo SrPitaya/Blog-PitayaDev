@@ -28,7 +28,7 @@ Route::resource('blog', PostController::class,[
 ]); #Ruta de la página de blog que llama a todos los métodos del controlador PostController
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth'])
     ->name('dashboard');
 
 Route::middleware(['auth', 'password.confirm'])->group(function () {
